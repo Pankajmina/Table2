@@ -1,24 +1,102 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Table from './components/Table';
+import Table2 from './components/Table2';
+import Table3 from './components/Table3';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import Navbar from './components/Navbar';
+import React,{ useState } from 'react';
+import Edit from './components/Edit';
+import Add from './components/Add';
+import Delete from './components/Delete';
+
 
 function App() {
+  const data = [
+    {
+      name: 'Ajay',
+      rollnumber: '32',
+      class: '4',
+      age: '10'
+    },
+    {
+      name: 'Sanjay',
+      rollnumber: '10',
+      class: '2',
+      age: '10'
+    },
+    {
+      name: 'Lakshay',
+      rollnumber: '13',
+      class: '4',
+      age: '10'
+    }
+  ];
+  const data2 = [
+    {
+      name: 'Ajay',
+      salary: '2000',
+      class: '4',
+      age: '10'
+    },
+    {
+      name: 'Sanjay',
+      salary: '2000',
+      class: '2',
+      age: '10'
+    },
+    {
+      name: 'Lakshay',
+      salary: '2000',
+      class: '4',
+      age: '10'
+    }
+  ];
+  const data3 = [
+    {
+
+      rollnumber: '6',
+      class: '4',
+
+    },
+    {
+
+      rollnumber: '10',
+      class: '2',
+
+    },
+    {
+
+      rollnumber: '13',
+      class: '4',
+
+    }
+  ];
+  const [t, setT] = useState(data)
+  const [t2, setT2] = useState(data2)
+  const [t3, setT3] = useState(data3)
+  const updateTable = (newT) => {
+    setT(newT);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+
+        <Navbar />
+    
+        <Routes>
+       
+          <Route exact path='/' element={<Table table={t} />}></Route>
+          <Route exact path='/table2' element={<Table2 table={t2} />}></Route>
+          <Route exact path='/table3' element={<Table3 table={t3} />}></Route>
+        </Routes>
+      </Router>
+
+    </>
   );
 }
 
